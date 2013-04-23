@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BumpNastyViewController : UIViewController
+@interface BumpNastyViewController : UIViewController <UITextFieldDelegate>
+
+@property (copy, nonatomic) NSString *userName;
+
 
 @end
