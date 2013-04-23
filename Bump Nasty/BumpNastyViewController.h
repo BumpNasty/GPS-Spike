@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface BumpNastyViewController : UIViewController <UITextFieldDelegate>
+@interface BumpNastyViewController : UIViewController <CLLocationManagerDelegate> {
+    
+    CLLocationManager *locationManager;
+    
+    }
 
-@property (copy, nonatomic) NSString *userName;
-
-
+    @property (nonatomic, retain) CLLocationManager *locationManager;
+    
 @end

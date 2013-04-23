@@ -458,6 +458,7 @@
 				228343741726FEF200B27D6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		228343751726FEF200B27D6F /* Build configuration list for PBXNativeTarget "Bump Nasty GPS SpikeTests" */ = {
 			isa = XCConfigurationList;
@@ -466,6 +467,7 @@
 				228343771726FEF200B27D6F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

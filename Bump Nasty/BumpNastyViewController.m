@@ -9,18 +9,27 @@
 #import "BumpNastyViewController.h"
 
 @interface BumpNastyViewController ()
-- (IBAction)changeGreeting:(id)sender;
-@property (weak, nonatomic) IBOutlet UITextField *textField;
 @property (weak, nonatomic) IBOutlet UILabel *label;
-
+- (IBAction)updateGPS:(id)sender;
 @end
 
 @implementation BumpNastyViewController
+
+@synthesize locationManager;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    
+    locationManager.delegate = self;
+    
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+//    [locationManager startUpdatingLocation];    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -29,28 +38,36 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)changeGreeting:(id)sender {
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     
-    self.userName = self.textField.text;
+    CLLocation* location = [locations lastObject];
+    NSDate* eventDate = location.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    if (abs(howRecent) < 15.0) {
+        // If the event is recent, do something with it.
     
-    NSString *nameString = self.userName;
+    NSString *loc = [[NSString alloc] initWithFormat:@"Latitude %+.6f\nLongitude %+.6f\n",
+                         location.coordinate.latitude,
+                         location.coordinate.longitude];
     
-    if ([nameString length] == 0) {
-        nameString = @"World";
+    self.label.text = loc;
+        
+    [manager stopUpdatingLocation];
+        
     }
-    NSString *greeting = [[NSString alloc] initWithFormat:@"Hello, %@!", nameString];
-    
-    self.label.text = greeting;
-    
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
-    if (theTextField == self.textField) {
-        [theTextField resignFirstResponder];
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    if ([error code] == kCLErrorDenied) {
+        // This error indicates that the user has denied the application's request to use location services.
+        [manager stopUpdatingLocation];
     }
-    
-    return YES;
 }
 
 
+- (IBAction)updateGPS:(id)sender {
+    [locationManager startUpdatingLocation];
+    
+}
 @end

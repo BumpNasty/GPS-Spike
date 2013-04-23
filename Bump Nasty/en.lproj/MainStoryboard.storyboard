@@ -12,14 +12,17 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3pd-4V-ola">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="3pd-4V-ola">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="74" id="pkz-bx-4gy"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4v-CL-KzL">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YkG-Dn-kuY">
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Hello">
+                                <state key="normal" title="Update GPS">
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -27,33 +30,21 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="changeGreeting:" destination="2" eventType="touchUpInside" id="DtG-mJ-gHg"/>
+                                    <action selector="updateGPS:" destination="2" eventType="touchUpInside" id="REb-qy-44d"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7eh-IG-ktI">
-                                <accessibility key="accessibilityConfiguration" hint="Type your name"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
-                                <connections>
-                                    <outlet property="delegate" destination="2" id="7v2-ZU-3JX"/>
-                                </connections>
-                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="3pd-4V-ola" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="3iE-c3-277"/>
                             <constraint firstItem="3pd-4V-ola" firstAttribute="top" secondItem="3" secondAttribute="top" constant="263" id="5ma-cg-wmM"/>
-                            <constraint firstItem="7eh-IG-ktI" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="74g-qr-wRm"/>
-                            <constraint firstAttribute="bottom" secondItem="M4v-CL-KzL" secondAttribute="bottom" constant="71" id="8Yg-FV-zMn"/>
                             <constraint firstAttribute="trailing" secondItem="3pd-4V-ola" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="DQ3-0W-xv1"/>
-                            <constraint firstItem="3pd-4V-ola" firstAttribute="centerX" secondItem="M4v-CL-KzL" secondAttribute="centerX" type="default" id="gYM-ei-mkh"/>
-                            <constraint firstItem="7eh-IG-ktI" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="umv-1U-a5K"/>
-                            <constraint firstAttribute="trailing" secondItem="7eh-IG-ktI" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ws3-pZ-bcd"/>
+                            <constraint firstAttribute="bottom" secondItem="YkG-Dn-kuY" secondAttribute="bottom" constant="133" id="Df8-AS-UJT"/>
+                            <constraint firstItem="YkG-Dn-kuY" firstAttribute="centerX" secondItem="3pd-4V-ola" secondAttribute="centerX" type="default" id="K4q-L6-RJY"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="label" destination="3pd-4V-ola" id="sD8-xw-zaP"/>
-                        <outlet property="textField" destination="7eh-IG-ktI" id="7Ls-Qr-U0w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
@@ -64,10 +55,8 @@
         <class className="BumpNastyViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/BumpNastyViewController.h"/>
             <relationships>
-                <relationship kind="action" name="changeGreeting:"/>
-                <relationship kind="outlet" name="LocationObject" candidateClass="NSObject"/>
+                <relationship kind="action" name="updateGPS:"/>
                 <relationship kind="outlet" name="label" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="textField" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="NSLayoutConstraint" superclassName="NSObject">
